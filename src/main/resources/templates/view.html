@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GHVo List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .toggle-links {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>국회의원</h2>
+        <div class="toggle-links">
+            <!-- 다른 링크 추가 -->
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>언제</th>
+                        <th>선거</th>
+                        <th>시도</th>
+                        <th>sggName</th>
+                        <th>sunsu</th>
+                        <th>tusu</th>
+                        <th th:each="index : ${#numbers.sequence(1,35)}" th:text="'jungdang'+${index}">jungdang</th>
+                        <th th:each="index : ${#numbers.sequence(1,35)}" th:text="'hubo'+${index}">hubo</th>
+                        <th th:each="index : ${#numbers.sequence(1,35)}" th:text="'dpSu'+${index}">dpSu</th>
+                        <th>mutusu</th>
+                        <th>gigwonsu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ghvo, index : ${ghvoList}">
+                        <td th:text="${ghvo.언제}"></td>
+                        <td th:text="${ghvo.선거}"></td>
+                        <td th:text="${ghvo.시도}"></td>
+                        <td th:text="${ghvo.sggName}"></td>
+                        <td th:text="${ghvo.sunsu}"></td>
+                        <td th:text="${ghvo.tusu}"></td>
+                        <td th:each="party : ${ghvo.jungdang}" th:text="${party}"></td>
+                        <td th:each="candidate : ${ghvo.hubo}" th:text="${candidate}"></td>
+                        <td th:each="vote : ${ghvo.dpSu}" th:text="${vote}"></td>
+                        <td th:text="${ghvo.mutusu}"></td>
+                        <td th:text="${ghvo.gigwonsu}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Add your scripts here if needed
+    </script>
+</body>
+</html>
