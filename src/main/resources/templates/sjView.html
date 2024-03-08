@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>sjvo List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .toggle-links {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>국회의원</h2>
+        <div class="toggle-links">
+            <!-- 다른 링크 추가 -->
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>언제</th>
+                        <th>선거</th>
+                        <th>시도</th>
+                        <th>sggName</th>
+                        		<th>일차</th>
+                        <th>sunsu</th>
+              
+                    
+                        <th th:each="index : ${#numbers.sequence(7,20)}" th:text="${index}+'시'">dpSu</th>
+           		
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sjvo, index : ${sjvoList}">
+                        <td th:text="${sjvo.언제}"></td>
+                        <td th:text="${sjvo.선거}"></td>
+                        <td th:text="${sjvo.시도}"></td>
+                        <td th:text="${sjvo.sggName}"></td>
+                         <td th:text="${sjvo.일차}"></td>
+                        <td th:text="${sjvo.sunsu}"></td>
+    
+                        <td th:each="vote : ${sjvo.dpSu}" th:text="${vote}"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Add your scripts here if needed
+    </script>
+</body>
+</html>
