@@ -854,7 +854,7 @@ System.out.println("????");
 
 
 			// 'electionType2' 요소 대기 및 클릭
-			WebElement menu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("electionType2")));
+			WebElement menu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("electionType1")));
 			menu.click();
 			for(int i = 0 ; i<sidoList.size() ;i++) {
 			// 'electionName' 요소 대기
@@ -862,7 +862,7 @@ System.out.println("????");
 			// 'electionName' 요소를 Select 객체로 변환
 			Select select1 = new Select(selectBox);
 			// 'electionName' 요소에 값을 입력
-			select1.selectByValue("20040415");
+			select1.selectByValue("20121219");
 
 	
 
@@ -898,8 +898,8 @@ System.out.println("????");
 			
 			
 			WebElement tbody = secondTable.findElement(By.tagName("tbody"));
-			int whenCount = 17;
-			String kindSungu = "국회의원";
+			int whenCount = 18;
+			String kindSungu = "대통령";
 	
 			String city = sidoList.get(i).getSidoName();
 	
@@ -932,8 +932,10 @@ System.out.println("????");
 				for (int  z= 2; z < cells.size()-1; z++) {
 					WebElement cell = cells.get(z);
 			        String[] splitStr = cell.getText().split("\n");
-						dpSu.add(deleteComma(splitStr[0]));
-								
+						dpSu.add(deleteComma(splitStr[0]));	
+						if(z==2 || z==3 ) {
+							dpSu.add("");
+						}
 				}
 		
 					TPVO vo = TPVO.builder()
